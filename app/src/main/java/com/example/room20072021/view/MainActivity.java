@@ -12,7 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.room20072021.R;
+import com.example.room20072021.database.NoteEntity;
 import com.example.room20072021.viewmodel.NoteViewModel;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,11 +24,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("BBB","onCreate");
 
         noteViewModel = new ViewModelProvider(this,new NoteViewModel.NoteViewModelFactory(getApplication())).get(NoteViewModel.class);
 
 
+        //observe data
+        noteViewModel.getListNote().observe(this, new Observer<List<NoteEntity>>() {
+            @Override
+            public void onChanged(List<NoteEntity> noteEntities) {
+                Log.d("BBB",noteEntities.size() + "");
+            }
+        });
+
+        // call data
+        noteViewModel.queryGetListNote();
 
     }
 }

@@ -5,6 +5,11 @@ import android.content.Context;
 
 import com.example.room20072021.database.NoteDao;
 import com.example.room20072021.database.NoteDatabase;
+import com.example.room20072021.database.NoteEntity;
+
+import java.util.List;
+
+import io.reactivex.rxjava3.core.Flowable;
 
 public class NoteRepository {
     private static NoteRepository instance = null;
@@ -19,6 +24,10 @@ public class NoteRepository {
             instance = new NoteRepository(context);
         }
         return instance;
+    }
+
+    public Flowable<List<NoteEntity>> getListNote(){
+        return noteDao.getListNote();
     }
 
 }
