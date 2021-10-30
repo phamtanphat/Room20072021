@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         noteViewModel = new ViewModelProvider(this,new NoteViewModel.NoteViewModelFactory(getApplication())).get(NoteViewModel.class);
 
-
         //observe data
         noteViewModel.getListNote().observe(this, new Observer<List<NoteEntity>>() {
             @Override
