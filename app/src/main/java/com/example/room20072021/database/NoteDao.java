@@ -11,18 +11,19 @@ import java.util.List;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Maybe;
+import io.reactivex.rxjava3.core.Observable;
 
 @Dao
 public interface NoteDao {
 
     @Query("Select * from note")
-    Flowable<List<NoteEntity>> getListNote();
+    Observable<List<NoteEntity>> getListNote();
 
     @Insert
     Maybe<Long> insertNote(NoteEntity noteEntity);
 
     @Update
-    Maybe<Long> updateNote(NoteEntity noteEntity);
+    Maybe<Integer> updateNote(NoteEntity noteEntity);
 
     @Delete
     Completable deleteNote(NoteEntity noteEntity);

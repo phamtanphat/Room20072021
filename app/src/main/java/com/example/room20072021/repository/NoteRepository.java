@@ -12,6 +12,7 @@ import java.util.List;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Maybe;
+import io.reactivex.rxjava3.core.Observable;
 
 public class NoteRepository {
     private static NoteRepository instance = null;
@@ -28,14 +29,14 @@ public class NoteRepository {
         return instance;
     }
 
-    public Flowable<List<NoteEntity>> getListNote(){
+    public Observable<List<NoteEntity>> getListNote(){
         return noteDao.getListNote();
     }
 
     public Maybe<Long> insertNote(NoteEntity noteEntity){
         return noteDao.insertNote(noteEntity);
     }
-    public Maybe<Long> updateNote(NoteEntity noteEntity){
+    public Maybe<Integer> updateNote(NoteEntity noteEntity){
         return noteDao.updateNote(noteEntity);
     }
     public Completable delete(NoteEntity noteEntity){

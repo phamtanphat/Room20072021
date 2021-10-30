@@ -29,7 +29,7 @@ public class NoteViewModel extends AndroidViewModel {
     private NoteRepository noteRepository;
     private MutableLiveData<List<NoteEntity>> listNote;
     private MutableLiveData<Long> idInsert;
-    private MutableLiveData<Long> idUpdate;
+    private MutableLiveData<Integer> idUpdate;
     private MutableLiveData<Boolean> isDeleted;
     private MutableLiveData<Throwable> error;
 
@@ -81,14 +81,14 @@ public class NoteViewModel extends AndroidViewModel {
         noteRepository.updateNote(noteEntity)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new MaybeObserver<Long>() {
+                .subscribe(new MaybeObserver<Integer>() {
                     @Override
                     public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull Long aLong) {
+                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull Integer aLong) {
                         idUpdate.setValue(aLong);
                     }
 
@@ -135,7 +135,7 @@ public class NoteViewModel extends AndroidViewModel {
         return idInsert;
     }
 
-    public LiveData<Long> getIdUpdate(){
+    public LiveData<Integer> getIdUpdate(){
         return idUpdate;
     }
 

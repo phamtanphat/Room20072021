@@ -8,5 +8,15 @@
     android:orientation="vertical"
     tools:context=".view.MainActivity">
 
+    <Button
+        android:text="Delete"
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:text="Update"
+        android:id="@+id/buttonUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
